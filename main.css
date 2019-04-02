@@ -27,6 +27,7 @@ h1, h2 {
 .image > img {
     border-radius: 18px;
     max-width: 400px;
+    width: auto;
 }
 
 .select::after {
@@ -41,9 +42,4 @@ select.is-light {
 
 .progress {
     max-width: 400px;
-}
-
-canvas {
-    border-radius: 18px;
-    max-width: 100%;
 }

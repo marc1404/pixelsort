@@ -10,6 +10,7 @@
     const downloadAnchor = document.getElementById('download-anchor');
     const progressBar = document.getElementById('progress-bar');
     const canvasElement = document.getElementById('canvas-element');
+    const outputImage = document.getElementById('output-image');
 
     initEventListeners();
 
@@ -23,7 +24,11 @@
             setTimeout(() => {
                 generateImage();
                 finishProgress();
-                updateDownloadAnchor();
+
+                const dataUrl = canvasElement.toDataURL('image/png');
+
+                updateOutputImage(dataUrl);
+                updateDownloadAnchor(dataUrl);
             }, 1000);
         };
     }
@@ -122,8 +127,12 @@
         return [h, s, l];
     }
 
-    function updateDownloadAnchor() {
+    function updateOutputImage(dataUrl) {
+        outputImage.src = dataUrl;
+    }
+
+    function updateDownloadAnchor(dataUrl) {
         downloadAnchor.download = `${new Date().toISOString()}_pixelsort.png`;
-        downloadAnchor.href = canvasElement.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+        downloadAnchor.href = dataUrl.replace('image/png', 'image/octet-stream');
     }
 })();
