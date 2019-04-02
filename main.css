@@ -1,0 +1,49 @@
+html, body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+body {
+    padding: 1rem;
+    font-family: 'Work Sans', sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+.mb-1 {
+    margin-bottom: 1rem !important;
+}
+
+.mb-half {
+    margin-bottom: 0.5rem !important;
+}
+
+.label {
+    font-weight: normal;
+}
+
+.image > img {
+    border-radius: 18px;
+    max-width: 400px;
+}
+
+.select::after {
+    border-color: #363636 !important;
+}
+
+select.is-light {
+    background-color: #f5f5f5;
+    border-color: transparent;
+    color: #363636;
+}
+
+.progress {
+    max-width: 400px;
+}
+
+canvas {
+    border-radius: 18px;
+    max-width: 100%;
+}
