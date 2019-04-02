@@ -27,7 +27,6 @@ h1, h2 {
 .image > img {
     border-radius: 18px;
     max-width: 400px;
-    width: auto;
 }
 
 .select::after {
