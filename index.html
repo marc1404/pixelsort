@@ -44,7 +44,6 @@
                 file.onchange = event => preview(event);
 
                 function preview(event) {
-                    console.log(event);
                     const { files } = event.target;
                     const [ file ] = files;
                     const fileReader = new FileReader();
@@ -81,6 +80,22 @@
                     console.info('Sorting pixels...');
 
                     const sortedPixels = pixels.sort((a, b) => {
+                        if ((a.hsv.saturation === 0 || b.hsv.saturation === 0) && a.hsv.saturation !== b.hsv.saturation) {
+                            return b.hsv.saturation - a.hsv.saturation;
+                        }
+
+                        if (a.hsv.hue !== b.hsv.hue) {
+                            return a.hsv.hue - b.hsv.hue;
+                        }
+
+                        if (a.hsv.saturation !== b.hsv.saturation) {
+                            return a.hsv.saturation - b.hsv.saturation;
+                        }
+
+                        if (a.hsv.saturation === 0 && b.hsv.saturation === 0 && a.hsv.lightness !== b.hsv.lightness) {
+                            return b.hsv.lightness - a.hsv.lightness;
+                        }
+
                         return a.hsv.hue - b.hsv.hue;
                     });
 
