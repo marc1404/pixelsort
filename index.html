@@ -3,27 +3,55 @@
     <head>
         <meta charset="utf-8" />
 
-        <title>pixelsort</title>
+        <title>PixelSort</title>
     </head>
 
     <body>
         <h1>
-            Welcome to PixelSort!
+            PixelSort
         </h1>
 
         <hr>
 
-        <img id="image" src="flowers.jpg" />
+        <h2>
+            1. Choose an image
+        </h2>
+
+        <input id="file" type="file" />
 
         <hr>
+
+        <h2>
+            2. Preview
+        </h2>
+
+        <img id="image" />
+
+        <hr>
+
+        <h2>
+            3. Final Image
+        </h2>
         
         <canvas id="canvas"></canvas>
 
         <script>
             (function () {
+                const file = document.getElementById('file');
                 const image = document.getElementById('image');
                 const canvas = document.getElementById('canvas');
                 image.onload = () => start();
+                file.onchange = event => preview(event);
+
+                function preview(event) {
+                    console.log(event);
+                    const { files } = event.target;
+                    const [ file ] = files;
+                    const fileReader = new FileReader();
+                    fileReader.onload = () => image.src = fileReader.result;
+
+                    fileReader.readAsDataURL(file);
+                }
 
                 function start() {
                     const { width, height } = image;
